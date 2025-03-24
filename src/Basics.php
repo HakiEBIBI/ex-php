@@ -19,6 +19,7 @@ class Basics
      */
     public static function add(int $number1, int $number2): int
     {
+        return $number1 + $number2;
     }
 
     /**
@@ -26,6 +27,7 @@ class Basics
      */
     public static function length(string $str): int
     {
+        return mb_strlen($str);
     }
 
     /**
@@ -33,6 +35,11 @@ class Basics
      */
     public static function condition(string $str): bool
     {
+        if (mb_strlen($str) > 10) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -40,6 +47,7 @@ class Basics
      */
     public static function concatenate(string $str1, string $str2): string
     {
+        return $str1 . $str2;
     }
 
     /**
@@ -48,6 +56,15 @@ class Basics
      */
     public static function getWordsToCount(string $str, int $wordsCountToRemain): string
     {
+        $words = array_filter(explode(' ', trim($str)));
+        while (count($words) > $wordsCountToRemain) {
+            $words = array_slice($words, 0, $wordsCountToRemain);
+        }
+        while (count($words) < $wordsCountToRemain) {
+            array_push($words, end($words));
+        }
+
+        return implode(' ', $words);
     }
 
 }
