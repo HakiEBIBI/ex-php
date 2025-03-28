@@ -1,8 +1,3 @@
-<?php
-// Calculate current time here
-
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,6 +9,13 @@
 </head>
 <body>
 <!-- WRITE YOUR HTML AND PHP TEMPLATING HERE -->
+<h1>
+    <?php
+    // Calculate current time here
+    $date = date("Y-m-d H:i:s");
+    echo $date;
+    ?></h1>
+
 <!-- Display the time in the right format -->
 </body>
 </html>
