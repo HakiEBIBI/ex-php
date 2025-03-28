@@ -1,10 +1,3 @@
-<?php
-/**
- * Get the values from the GET parameters with filter_input function
- */
-
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,6 +8,14 @@
     <title>URL query parameters</title>
 </head>
 <body>
+<h1><?php
+    /**
+     * Get the values from the GET parameters with filter_input function
+     */
+    $input = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+    $input2 = filter_input(INPUT_GET, 'age', FILTER_SANITIZE_SPECIAL_CHARS);
+    echo $input . ' is ', $input2, ' years old';
+    ?></h1>
 
 <!-- Display parameters here in a h1 tag -->
 
