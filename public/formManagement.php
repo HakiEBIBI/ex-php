@@ -9,7 +9,8 @@
  * The data submitted should remain displayed in the form after the submission.
  * (Your form should be semantically correct, use a label and name your fields)
  */
-
+$age = filter_input(INPUT_POST, "age", FILTER_VALIDATE_INT);
+$prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_SPECIAL_CHARS);
 ?>
 
 <!doctype html>
@@ -23,6 +24,27 @@
 </head>
 <body>
 
+<?php if (mb_strlen($prenom) > 6): ?>
+    <h1><?= " <span style='color:red'>$prenom </span> is $age years old " ?></h1>
+<?php elseif ($prenom && $age !== false): ?>
+    <h1><?= "$prenom is $age years old"; ?></h1>
+<?php else: ?>
+    <h1>Submit the form</h1>
+<?php endif ?>
+
+<form action="formManagement.php" method="POST">
+    <label>Name<input type="text" name="prenom" placeholder="Prenom"
+                      value="<?= htmlspecialchars($prenom ?? '') ?>"></label>
+    <label>Age<input type="number" name="age" placeholder="Age" value="<?= htmlspecialchars($age ?? '') ?>"></label>
+    <button type="submit">submit</button>
+</form>
 <!-- WRITE YOUR HTML AND PHP TEMPLATING HERE -->
+<?php if ($age > 18): ?>
+    <ul>
+        <?php for ($i = 1; $i <= $age; $i++): ?>
+            <li><?= $i ?></li>
+        <?php endfor; ?>
+    </ul>
+<?php endif; ?>
 </body>
 </html>

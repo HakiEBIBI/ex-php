@@ -22,6 +22,7 @@ function cheking($name, $age)
         return 'No query parameters found';
     }
 }
+
 ?>
 
 <!doctype html>
